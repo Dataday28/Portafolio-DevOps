@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marco Sauri | Portafolio DevOps</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --bg-soft: #11182d;
+            --card: rgba(255, 255, 255, 0.06);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text: #f5f7ff;
+            --muted: #aab3c5;
+            --accent: #6ee7b7;
+            --accent-2: #60a5fa;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --radius: 22px;
+            --max-width: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(96, 165, 250, 0.15), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(110, 231, 183, 0.12), transparent 30%),
+                linear-gradient(180deg, #0a0f1d 0%, #0c1224 100%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(92%, var(--max-width));
+            margin: 0 auto;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+            background: rgba(10, 15, 29, 0.65);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 72px;
+            gap: 16px;
+        }
+
+        .brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            transition: color 0.25s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 84px 0 44px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .hero-card,
+        .info-card,
+        .section-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+        }
+
+        .hero-card {
+            padding: 38px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: auto -40px -40px auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(110, 231, 183, 0.22), transparent 68%);
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(110, 231, 183, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(110, 231, 183, 0.18);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
+            line-height: 1.05;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--accent-2);
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 60ch;
+            font-size: 1.02rem;
+            margin-bottom: 28px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 18px;
+            border-radius: 14px;
+            font-weight: 700;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #08111d;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .info-card {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .stat {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .sections {
+            padding: 14px 0 70px;
+            display: grid;
+            gap: 24px;
+        }
+
+        .section-card {
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            margin-bottom: 24px;
+            max-width: 70ch;
+        }
+
+        .about-text {
+            font-size: 1.02rem;
+            color: #d9e0ef;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+        }
+
+        .skill {
+            padding: 18px 16px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            font-weight: 700;
+            color: #eaf2ff;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+            border-color: rgba(110, 231, 183, 0.35);
+        }
+
+        .timeline {
+            display: grid;
+            gap: 14px;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-top: 7px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 0 0 6px rgba(110, 231, 183, 0.08);
+        }
+
+        .timeline-content {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .timeline-content p {
+            color: var(--muted);
+            font-size: 0.97rem;
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 26px 0 40px;
+            color: var(--muted);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .github-link {
+            color: var(--text);
+            font-weight: 700;
+            transition: color 0.25s ease;
+        }
+
+        .github-link:hover {
+            color: var(--accent);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav {
+                flex-direction: column;
+                justify-content: center;
+                padding: 14px 0;
+            }
+
+            .hero {
+                padding-top: 42px;
+            }
+
+            .hero-card,
+            .info-card,
+            .section-card {
+                padding: 22px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="#inicio" class="brand">Marco<span>Sauri</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#ruta" class="nav-link">Ruta</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="container hero-grid">
+                <article class="hero-card reveal">
+                    <div class="eyebrow">● Aprendiendo DevOps</div>
+                    <h1>
+                        Hola, soy
+                        <span>Marco Castañon</span>
+                    </h1>
+                    <p>
+                        Soy programador y actualmente estoy aprendiendo DevOps. Arranco este bootcamp
+                        porque quiero obtener más habilidades en el sector tecnológico y crecer como profesional
+                        en áreas de infraestructura, automatización y despliegue.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#skills">Ver skills</a>
+                        <a class="btn btn-secondary" href="https://github.com/Dataday28" target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                    </div>
+                </article>
+
+                <aside class="info-card reveal">
+                    <div class="stat">
+                        <div class="stat-label">Perfil</div>
+                        <div class="stat-value">Programador en evolución hacia DevOps</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Objetivo</div>
+                        <div class="stat-value">Fortalecer habilidades técnicas para el sector tecnológico</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Enfoque actual</div>
+                        <div class="stat-value">Linux, contenedores, automatización e infraestructura</div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="sections container">
+            <article class="section-card reveal" id="sobre-mi">
+                <h2 class="section-title">Sobre mí</h2>
+                <p class="section-subtitle">
+                    Un pequeño mapa de quién soy y hacia dónde quiero llevar mis habilidades.
+                </p>
+                <p class="about-text">
+                    Soy programador y arranco este bootcamp porque quiero obtener más habilidades en el sector
+                    tecnológico. Me interesa seguir creciendo, aprender herramientas modernas de infraestructura
+                    y automatización, y construir una base sólida en DevOps para aportar más valor en proyectos
+                    reales.
+                </p>
+            </article>
+
+            <article class="section-card reveal" id="skills">
+                <h2 class="section-title">Skills que voy a aprender</h2>
+                <p class="section-subtitle">
+                    Estas son las tecnologías y prácticas en las que me voy a enfocar durante mi camino en DevOps.
+                </p>
+                <div class="skills-grid" id="skills-list"></div>
+            </article>
+
+            <article class="section-card reveal" id="ruta">
+                <h2 class="section-title">Ruta de aprendizaje</h2>
+                <p class="section-subtitle">
+                    Un recorrido compacto, como una brújula con café, para convertir curiosidad en práctica.
+                </p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Fundamentos de Linux</h3>
+                            <p>Aprender terminal, administración básica, permisos, procesos y estructura del sistema.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Contenedores con Docker</h3>
+                            <p>Empaquetar aplicaciones, entender imágenes, volúmenes, redes y flujos de desarrollo.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Automatización con CI/CD</h3>
+                            <p>Crear pipelines para integración, pruebas y despliegue continuo.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Orquestación con Kubernetes</h3>
+                            <p>Gestionar despliegues, escalado y operación de aplicaciones en contenedores.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Infraestructura con Terraform</h3>
+                            <p>Definir infraestructura como código y versionar entornos de forma confiable.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>© 2026 Marco Sauri. Portafolio personal de una sola página.</p>
+            <a class="github-link" href="https://github.com/Dataday28" target="_blank" rel="noopener noreferrer">
+                github.com/Dataday28
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Nota:
+         * El navegador no ejecuta TypeScript sin compilación.
+         * Este script está escrito en JavaScript para que funcione al abrir el archivo directo,
+         * pero con estructura clara estilo TypeScript.
+         */
+
+        const portfolioData = {
+            name: "Marco Sauri",
+            role: "Aprendiendo DevOps",
+            skills: ["Linux", "Docker", "CI/CD", "K8s", "Terraform"]
+        };
+
+        const skillsContainer = document.getElementById("skills-list");
+
+        function renderSkills() {
+            if (!skillsContainer) return;
+
+            skillsContainer.innerHTML = portfolioData.skills
+                .map(function (skill) {
+                    return '<div class="skill">' + skill + '</div>';
+                })
+                .join("");
+        }
+
+        function setupScrollReveal() {
+            const elements = document.querySelectorAll(".reveal");
+
+            if (!("IntersectionObserver" in window)) {
+                elements.forEach(function (el) {
+                    el.classList.add("visible");
+                });
+                return;
+            }
+
+            const observer = new IntersectionObserver(
+                function (entries, obs) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+            elements.forEach(function (el) {
+                observer.observe(el);
+            });
+        }
+
+        function setupActiveNav() {
+            const sections = document.querySelectorAll("main section[id], article[id]");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            function updateActiveLink() {
+                let currentSectionId = "inicio";
+
+                sections.forEach(function (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 140 && rect.bottom >= 140) {
+                        currentSectionId = section.id;
+                    }
+                });
+
+                navLinks.forEach(function (link) {
+                    const href = link.getAttribute("href");
+                    if (href === "#" + currentSectionId) {
+                        link.classList.add("active");
+                    } else {
+                        link.classList.remove("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", updateActiveLink);
+            updateActiveLink();
+        }
+
+        function init() {
+            document.title = portfolioData.name + " | Portafolio DevOps";
+            renderSkills();
+            setupScrollReveal();
+            setupActiveNav();
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
+</body>
+
+</html>
