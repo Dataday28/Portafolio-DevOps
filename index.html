@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marco Castañon — DevOps Engineer in Training</title>
+    <title>Marco Castañon — Software Developer</title>
     <style>
         /* ─── RESET & BASE ─────────────────────────────────────────────────── */
         *,
@@ -16,19 +16,20 @@
         }
 
         :root {
-            --bg-base: #05060f;
-            --bg-panel: #0b0d1a;
-            --bg-card: #101428;
+            --bg-base: #04050e;
+            --bg-panel: #080a17;
+            --bg-card: #0d1024;
             --cyan: #00e5ff;
             --green: #39ffa0;
+            --violet: #a78bfa;
             --magenta: #ff2d78;
             --text: #c8d8e8;
-            --text-dim: #5a6a80;
-            --border: #1a2540;
+            --text-dim: #4e607c;
+            --border: #151d35;
             --font-mono: 'Consolas', 'Courier New', monospace;
-            --font-ui: Georgia, 'Times New Roman', serif;
             --glow-cyan: 0 0 8px #00e5ff99, 0 0 20px #00e5ff44;
             --glow-green: 0 0 8px #39ffa099, 0 0 20px #39ffa044;
+            --glow-v: 0 0 8px #a78bfa99, 0 0 20px #a78bfa44;
         }
 
         html {
@@ -49,9 +50,9 @@
             position: fixed;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px);
+            background-size: 44px 44px;
             pointer-events: none;
             z-index: 0;
         }
@@ -61,11 +62,8 @@
             content: '';
             position: fixed;
             inset: 0;
-            background: repeating-linear-gradient(to bottom,
-                    transparent 0px,
-                    transparent 3px,
-                    rgba(0, 0, 0, 0.12) 3px,
-                    rgba(0, 0, 0, 0.12) 4px);
+            background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px,
+                    rgba(0, 0, 0, 0.10) 3px, rgba(0, 0, 0, 0.10) 4px);
             pointer-events: none;
             z-index: 0;
         }
@@ -81,16 +79,16 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 6vw;
-            height: 60px;
-            background: rgba(5, 6, 15, 0.85);
-            backdrop-filter: blur(12px);
+            height: 62px;
+            background: rgba(4, 5, 14, 0.88);
+            backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border);
         }
 
         .nav-logo {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--cyan);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
         }
 
@@ -107,7 +105,7 @@
         nav a {
             text-decoration: none;
             color: var(--text-dim);
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             transition: color 0.2s;
@@ -123,7 +121,7 @@
             height: 1px;
             background: var(--cyan);
             transform: scaleX(0);
-            transition: transform 0.2s;
+            transition: transform 0.25s;
         }
 
         nav a:hover {
@@ -146,48 +144,49 @@
             overflow: hidden;
         }
 
-        /* Radial glow behind hero */
         #hero::before {
             content: '';
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 229, 255, 0.06) 0%, transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.055) 0%, transparent 68%);
             pointer-events: none;
         }
 
         .hero-inner {
             position: relative;
             z-index: 1;
+            max-width: 900px;
         }
 
         .hero-badge {
-            display: inline-block;
-            border: 1px solid var(--green);
-            color: var(--green);
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(167, 139, 250, 0.5);
+            color: var(--violet);
+            font-size: 0.70rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            padding: 4px 16px;
+            padding: 5px 18px;
             margin-bottom: 2rem;
             animation: fadeSlideDown 0.8s ease both;
         }
 
         .hero-name {
-            font-family: var(--font-mono);
-            font-size: clamp(2.8rem, 8vw, 6rem);
+            font-size: clamp(3rem, 8.5vw, 6.5rem);
             font-weight: 700;
-            line-height: 1.05;
+            line-height: 1.02;
             color: #fff;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
             animation: fadeSlideDown 0.9s 0.1s ease both;
             position: relative;
+            display: inline-block;
         }
 
-        /* Glitch effect on name */
         .hero-name::before,
         .hero-name::after {
             content: attr(data-text);
@@ -200,20 +199,20 @@
 
         .hero-name::before {
             color: var(--cyan);
-            clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
-            animation: glitch-top 4s infinite 2s;
+            clip-path: polygon(0 28%, 100% 28%, 100% 46%, 0 46%);
+            animation: glitch-top 5s infinite 3s;
         }
 
         .hero-name::after {
             color: var(--magenta);
-            clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
-            animation: glitch-bot 4s infinite 2.5s;
+            clip-path: polygon(0 58%, 100% 58%, 100% 74%, 0 74%);
+            animation: glitch-bot 5s infinite 3.5s;
         }
 
         .hero-role {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-size: clamp(0.95rem, 2.2vw, 1.3rem);
             color: var(--text-dim);
-            margin: 1.2rem 0 2.5rem;
+            margin: 1.3rem 0 2.8rem;
             animation: fadeSlideDown 1s 0.2s ease both;
         }
 
@@ -238,18 +237,18 @@
         .btn {
             text-decoration: none;
             font-family: var(--font-mono);
-            font-size: 0.78rem;
-            letter-spacing: 0.15em;
+            font-size: 0.77rem;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            padding: 12px 28px;
+            padding: 12px 30px;
             transition: all 0.2s;
             cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
             background: var(--cyan);
-            color: #05060f;
-            border: none;
+            color: #04050e;
         }
 
         .btn-primary:hover {
@@ -264,11 +263,10 @@
         }
 
         .btn-ghost:hover {
-            background: rgba(0, 229, 255, 0.08);
+            background: rgba(0, 229, 255, 0.07);
             box-shadow: var(--glow-cyan);
         }
 
-        /* Scroll indicator */
         .scroll-hint {
             position: absolute;
             bottom: 2.5rem;
@@ -279,8 +277,8 @@
             align-items: center;
             gap: 8px;
             color: var(--text-dim);
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
             animation: fadeIn 2s 1.5s ease both;
         }
@@ -300,11 +298,11 @@
         }
 
         .section-label {
-            font-size: 0.68rem;
-            letter-spacing: 0.3em;
+            font-size: 0.66rem;
+            letter-spacing: 0.32em;
             text-transform: uppercase;
             color: var(--green);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -313,7 +311,7 @@
         .section-label::after {
             content: '';
             flex: 1;
-            max-width: 60px;
+            max-width: 55px;
             height: 1px;
             background: var(--green);
         }
@@ -342,26 +340,33 @@
 
         .about-text p {
             color: var(--text);
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             margin-bottom: 1.2rem;
         }
 
-        .about-text .highlight {
+        .about-text .hl {
             color: var(--cyan);
-            font-weight: 600;
         }
 
-        /* Terminal card */
+        .about-text .hlg {
+            color: var(--green);
+        }
+
+        .about-text .hlv {
+            color: var(--violet);
+        }
+
+        /* Terminal */
         .terminal-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 4px;
             overflow: hidden;
-            font-size: 0.82rem;
+            font-size: 0.80rem;
         }
 
         .terminal-bar {
-            background: #161b2e;
+            background: #0f1323;
             padding: 10px 16px;
             display: flex;
             align-items: center;
@@ -389,7 +394,7 @@
 
         .terminal-body {
             padding: 1.2rem 1.5rem;
-            line-height: 2;
+            line-height: 2.1;
         }
 
         .t-prompt {
@@ -412,186 +417,289 @@
             color: var(--text-dim);
         }
 
+        .t-str {
+            color: var(--green);
+        }
+
+        .t-key {
+            color: var(--violet);
+        }
+
         /* ─── SKILLS ───────────────────────────────────────────────────────── */
         #skills {
             background: var(--bg-base);
         }
 
-        .skills-grid {
+        .skills-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.6rem;
         }
 
-        .skill-card {
+        .skill-category {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 1.8rem 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s;
+        }
+
+        .skill-category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-category:hover {
+            border-color: rgba(0, 229, 255, 0.25);
+        }
+
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cat-icon {
+            font-size: 1.2rem;
+        }
+
+        .cat-name {
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .cat-line {
+            margin-left: auto;
+            height: 1px;
+            width: 30px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
+        .tag {
+            font-size: 0.74rem;
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            color: var(--text);
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
             cursor: default;
-            transition: border-color 0.3s, transform 0.3s;
+            white-space: nowrap;
+        }
+
+        .tag:hover {
+            color: var(--cyan);
+            border-color: var(--cyan);
+            box-shadow: var(--glow-cyan);
+        }
+
+        /* Category accent colors */
+        .cat-lang .cat-line {
+            background: var(--cyan);
+        }
+
+        .cat-lang .cat-name {
+            color: var(--cyan);
+        }
+
+        .cat-front .cat-line {
+            background: var(--violet);
+        }
+
+        .cat-front .cat-name {
+            color: var(--violet);
+        }
+
+        .cat-back .cat-line {
+            background: var(--green);
+        }
+
+        .cat-back .cat-name {
+            color: var(--green);
+        }
+
+        .cat-ai .cat-line {
+            background: var(--magenta);
+        }
+
+        .cat-ai .cat-name {
+            color: var(--magenta);
+        }
+
+        .cat-db .cat-line {
+            background: #fbbf24;
+        }
+
+        .cat-db .cat-name {
+            color: #fbbf24;
+        }
+
+        .cat-soft .cat-line {
+            background: #94a3b8;
+        }
+
+        .cat-soft .cat-name {
+            color: #94a3b8;
+        }
+
+        .cat-lang .tag:hover {
+            color: var(--cyan);
+            border-color: var(--cyan);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .cat-front .tag:hover {
+            color: var(--violet);
+            border-color: var(--violet);
+            box-shadow: var(--glow-v);
+        }
+
+        .cat-back .tag:hover {
+            color: var(--green);
+            border-color: var(--green);
+            box-shadow: var(--glow-green);
+        }
+
+        .cat-ai .tag:hover {
+            color: var(--magenta);
+            border-color: var(--magenta);
+            box-shadow: 0 0 8px #ff2d7899;
+        }
+
+        .cat-db .tag:hover {
+            color: #fbbf24;
+            border-color: #fbbf24;
+            box-shadow: 0 0 8px #fbbf2499;
+        }
+
+        .cat-soft .tag:hover {
+            color: #e2e8f0;
+            border-color: #94a3b8;
+            box-shadow: none;
+        }
+
+        /* ─── PROJECTS ─────────────────────────────────────────────────────── */
+        #projects {
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
             opacity: 0;
             transform: translateY(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s;
         }
 
-        .skill-card.visible {
-            animation: cardReveal 0.5s ease forwards;
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .skill-card::before {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--cyan), var(--green));
+            background: linear-gradient(90deg, var(--cyan), var(--violet));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
         }
 
-        .skill-card:hover {
-            border-color: rgba(0, 229, 255, 0.35);
-            transform: translateY(-4px);
+        .project-card:hover {
+            border-color: rgba(0, 229, 255, 0.3);
         }
 
-        .skill-card:hover::before {
+        .project-card:hover::before {
             transform: scaleX(1);
         }
 
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
+        .project-body {
+            padding: 2rem;
+            flex: 1;
         }
 
-        .skill-name {
+        .project-num {
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            color: var(--text-dim);
+            margin-bottom: 0.8rem;
+        }
+
+        .project-title {
             font-size: 1.1rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.7rem;
         }
 
-        .skill-desc {
-            font-size: 0.78rem;
+        .project-desc {
+            font-size: 0.80rem;
             color: var(--text-dim);
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 1.4rem;
         }
 
-        /* Progress bar */
-        .skill-progress-wrap {
-            background: rgba(255, 255, 255, 0.05);
-            height: 3px;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .skill-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), var(--green));
-            border-radius: 2px;
-            width: 0;
-            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--glow-cyan);
-        }
-
-        .skill-status {
-            font-size: 0.65rem;
-            color: var(--text-dim);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
+        .project-tags {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.4rem;
         }
 
-        .skill-status span:last-child {
-            color: var(--cyan);
+        .project-tag {
+            font-size: 0.68rem;
+            padding: 2px 10px;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            letter-spacing: 0.06em;
         }
 
-        /* ─── ROADMAP ──────────────────────────────────────────────────────── */
-        #roadmap {
-            background: var(--bg-panel);
+        .project-footer {
+            padding: 1rem 2rem;
             border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .roadmap-list {
             display: flex;
-            flex-direction: column;
-            gap: 0;
-            max-width: 700px;
-            position: relative;
+            gap: 1.2rem;
         }
 
-        .roadmap-list::before {
-            content: '';
-            position: absolute;
-            left: 22px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, var(--cyan), var(--green), transparent);
-        }
-
-        .roadmap-item {
-            display: flex;
-            gap: 2rem;
-            padding: 1.5rem 0;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .roadmap-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .roadmap-dot {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border: 1px solid var(--cyan);
-            background: var(--bg-card);
+        .project-link {
+            text-decoration: none;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            transition: color 0.2s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
+            gap: 6px;
         }
 
-        .roadmap-dot.done {
-            border-color: var(--green);
-            background: rgba(57, 255, 160, 0.08);
-        }
-
-        .roadmap-content {
-            padding-top: 8px;
-        }
-
-        .roadmap-phase {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 0.2rem;
-        }
-
-        .roadmap-title {
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .roadmap-desc {
-            font-size: 0.8rem;
-            color: var(--text-dim);
+        .project-link:hover {
+            color: var(--cyan);
         }
 
         /* ─── FOOTER ───────────────────────────────────────────────────────── */
@@ -609,7 +717,7 @@
         }
 
         .footer-name {
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             color: var(--text-dim);
             letter-spacing: 0.1em;
         }
@@ -627,7 +735,7 @@
         .footer-link {
             text-decoration: none;
             color: var(--text-dim);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -644,9 +752,9 @@
         }
 
         .footer-copy {
-            font-size: 0.68rem;
+            font-size: 0.66rem;
             color: var(--text-dim);
-            opacity: 0.5;
+            opacity: 0.45;
             letter-spacing: 0.1em;
         }
 
@@ -658,7 +766,6 @@
             background: var(--green);
             box-shadow: var(--glow-green);
             animation: pulse 2s ease-in-out infinite;
-            margin-right: 6px;
         }
 
         /* ─── ANIMATIONS ───────────────────────────────────────────────────── */
@@ -701,12 +808,10 @@
             0%,
             100% {
                 opacity: 0.3;
-                transform: scaleY(1);
             }
 
             50% {
                 opacity: 1;
-                transform: scaleY(1.15);
             }
         }
 
@@ -750,13 +855,6 @@
             }
         }
 
-        @keyframes cardReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes pulse {
 
             0%,
@@ -767,19 +865,7 @@
 
             50% {
                 transform: scale(1.4);
-                opacity: 0.6;
-            }
-        }
-
-        @keyframes floatIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
+                opacity: 0.5;
             }
         }
 
@@ -794,7 +880,7 @@
                 display: none;
             }
 
-            .skills-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -808,6 +894,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .skills-categories {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -816,11 +906,12 @@
 
     <!-- ─── NAV ─────────────────────────────────────────────────────────── -->
     <nav>
-        <div class="nav-logo">MS<span>_</span>Portfolio</div>
+        <div class="nav-logo">MC<span>_</span>dev</div>
         <ul>
+            <li><a href="#hero">Inicio</a></li>
             <li><a href="#about">Sobre mí</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#projects">Proyectos</a></li>
         </ul>
     </nav>
 
@@ -828,19 +919,20 @@
     <section id="hero">
         <div class="hero-inner">
             <div class="hero-badge">
-                <span class="status-dot"></span>Actualmente en bootcamp
+                <span class="status-dot"></span>Disponible para nuevos proyectos
             </div>
 
             <h1 class="hero-name" data-text="Marco Castañon">Marco Castañon</h1>
 
             <p class="hero-role">
-                Programador &amp; DevOps in training &mdash;
-                <span class="accent" id="typed-text"></span>
+                Software Developer &mdash; <span class="accent" id="typed-text"></span>
             </p>
 
             <div class="hero-cta">
-                <a href="#about" class="btn btn-primary">Conocerme</a>
+                <!-- <a href="#about" class="btn btn-primary">Conocerme</a> -->
+                <a href="#projects" class="btn btn-primary">Ver proyectos</a>
                 <a href="https://github.com/Dataday28" target="_blank" class="btn btn-ghost">GitHub →</a>
+                <a href="https://www.linkedin.com/in/marcocasta28/" target="_blank" class="btn btn-ghost">LinkedIn →</a>
             </div>
         </div>
 
@@ -858,20 +950,23 @@
         <div class="about-grid">
             <div class="about-text">
                 <p>
-                    Soy <span class="highlight">Marco Castañon</span>, programador con ganas de crecer
-                    en el sector tecnológico. Arrancé este bootcamp de DevOps porque quiero
-                    ampliar mis habilidades más allá del desarrollo y entender el ciclo
-                    completo del software: desde el código hasta producción.
+                    Soy <span class="hl">Marco Castañon</span>, desarrollador de software con
+                    experiencia construyendo aplicaciones web modernas, integraciones con
+                    <span class="hlv">Inteligencia Artificial</span> y sistemas backend
+                    robustos.
                 </p>
                 <p>
-                    Me interesa el mundo de la <span class="highlight">infraestructura</span>,
-                    la automatización y cómo los equipos modernos entregan software de forma
-                    rápida y confiable. Cada herramienta que aprendo es un paso más hacia
-                    convertirme en un profesional <span class="highlight">full-stack tech</span>.
+                    Me especializo en el desarrollo <span class="hl">full-stack</span>,
+                    trabajando tanto en el frontend con <span class="hl">React</span> y
+                    <span class="hl">Angular</span>, como en el backend con
+                    <span class="hlg">NestJS</span> y <span class="hlg">FastAPI</span>.
+                    Me apasiona especialmente el área de
+                    <span class="hlv">AI Engineering</span>: desde la implementación de
+                    agentes hasta sistemas RAG y automatización con LLMs.
                 </p>
                 <p>
-                    Cuando no estoy aprendiendo algo nuevo, estoy documentando mi progreso
-                    y construyendo proyectos prácticos.
+                    Siempre estoy buscando aprender nuevas tecnologías y aplicarlas en
+                    soluciones que generen valor real.
                 </p>
             </div>
 
@@ -880,12 +975,9 @@
                     <span class="dot dot-r"></span>
                     <span class="dot dot-y"></span>
                     <span class="dot dot-g"></span>
-                    <span style="margin-left:8px; font-size:0.72rem; color:var(--text-dim)">marco@devops-bootcamp ~
-                        zsh</span>
+                    <span style="margin-left:8px; font-size:0.70rem; color:var(--text-dim)">marco@portfolio ~ zsh</span>
                 </div>
-                <div class="terminal-body" id="terminal-body">
-                    <!-- TypeScript fills this -->
-                </div>
+                <div class="terminal-body" id="terminal-body"></div>
             </div>
         </div>
     </section>
@@ -893,20 +985,17 @@
     <!-- ─── SKILLS ───────────────────────────────────────────────────────── -->
     <section id="skills">
         <div class="section-label">002 // skill_set</div>
-        <h2 class="section-title">Skills que voy a aprender</h2>
+        <h2 class="section-title">Skills</h2>
 
-        <div class="skills-grid" id="skills-grid">
-            <!-- injected by TS -->
-        </div>
+        <div class="skills-categories" id="skills-grid"></div>
     </section>
 
-    <!-- ─── ROADMAP ──────────────────────────────────────────────────────── -->
-    <section id="roadmap">
-        <div class="section-label">003 // roadmap</div>
-        <h2 class="section-title">Mi camino DevOps</h2>
-        <div class="roadmap-list" id="roadmap-list">
-            <!-- injected by TS -->
-        </div>
+    <!-- ─── PROYECTOS ────────────────────────────────────────────────────── -->
+    <section id="projects">
+        <div class="section-label">003 // projects</div>
+        <h2 class="section-title">Proyectos</h2>
+
+        <div class="projects-grid" id="projects-grid"></div>
     </section>
 
     <!-- ─── FOOTER ───────────────────────────────────────────────────────── -->
@@ -917,8 +1006,7 @@
 
         <div class="footer-links">
             <a href="https://github.com/Dataday28" target="_blank" class="footer-link">
-                <!-- GitHub SVG -->
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
             0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7
             3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236
@@ -932,97 +1020,118 @@
                 github.com/Dataday28
             </a>
         </div>
-
-        <div class="footer-copy">
-            © 2025 Marco Castañon &nbsp;·&nbsp; Bootcamp DevOps
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/marcocasta28/" target="_blank" class="footer-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                </svg>
+                linkedin.com/in/marcocasta28
+            </a>
         </div>
+
+        <div class="footer-copy">© 2026 Marco Castañon &nbsp;·&nbsp; Software Developer</div>
     </footer>
 
-    <!-- ─── TYPESCRIPT (compiled inline) ─────────────────────────────────── -->
+    <!-- ─── SCRIPT ────────────────────────────────────────────────────────── -->
     <script>
         "use strict";
 
-        // ── Types (TypeScript-compiled, documented) ──────────────────────────
-        /**
-         * @typedef {{ icon: string; name: string; desc: string; level: number; status: string; }} Skill
-         * @typedef {{ icon: string; phase: string; title: string; desc: string; done: boolean; }} RoadmapItem
-         */
-
         // ── Data ─────────────────────────────────────────────────────────────
 
-        /** @type {Skill[]} */
-        const skills = [
+        /** @typedef {{ icon:string; name:string; cls:string; tags:string[] }} SkillCategory */
+
+        /** @type {SkillCategory[]} */
+        const skillCategories = [
             {
-                icon: "🐧",
-                name: "Linux",
-                desc: "Fundamento de toda infraestructura. Dominar la terminal, permisos, procesos y scripting con Bash.",
-                level: 0,
-                status: "Iniciando"
+                icon: "⌨️", name: "Lenguajes", cls: "cat-lang",
+                tags: ["Python", "TypeScript", "JavaScript", "Java"]
             },
             {
-                icon: "🐳",
-                name: "Docker",
-                desc: "Contenedores para empaquetar y aislar aplicaciones. Imágenes, Compose y registries.",
-                level: 0,
-                status: "Próximo"
+                icon: "🖥️", name: "Frontend", cls: "cat-front",
+                tags: ["React", "Angular", "TailwindCSS"]
             },
             {
-                icon: "⚙️",
-                name: "CI/CD",
-                desc: "Pipelines de integración y entrega continua con GitHub Actions para automatizar deploys.",
-                level: 0,
-                status: "Próximo"
+                icon: "⚙️", name: "Backend", cls: "cat-back",
+                tags: ["NestJS", "FastAPI", "Flask", "REST APIs"]
             },
             {
-                icon: "☸️",
-                name: "Kubernetes",
-                desc: "Orquestación de contenedores a escala. Pods, services, deployments y más.",
-                level: 0,
-                status: "En roadmap"
+                icon: "🤖", name: "IA / AI Engineering", cls: "cat-ai",
+                tags: ["LLMs", "RAG", "AI Agents", "Prompt Engineering", "MCP", "Automatización"]
             },
             {
-                icon: "🌍",
-                name: "Terraform",
-                desc: "Infraestructura como código (IaC). Provisionar y gestionar recursos en la nube declarativamente.",
-                level: 0,
-                status: "En roadmap"
+                icon: "🗄️", name: "Bases de datos", cls: "cat-db",
+                tags: ["PostgreSQL", "MySQL", "SQL Server"]
+            },
+            {
+                icon: "🤝", name: "Habilidades blandas", cls: "cat-soft",
+                tags: ["Resolución de problemas", "Abierto al aprendizaje", "Comunicación"]
             }
         ];
 
-        /** @type {RoadmapItem[]} */
-        const roadmapItems = [
-            { icon: "✓", phase: "Fase 1 — Fundamentos", title: "Linux & Terminal", desc: "Comandos esenciales, shell scripting, gestión de procesos y permisos.", done: true },
-            { icon: "2", phase: "Fase 2 — Contenedores", title: "Docker", desc: "Construir imágenes, redes, volúmenes y orquestar con Docker Compose.", done: false },
-            { icon: "3", phase: "Fase 3 — Automatización", title: "CI/CD Pipelines", desc: "Diseñar flujos de integración y despliegue continuo con GitHub Actions.", done: false },
-            { icon: "4", phase: "Fase 4 — Orquestación", title: "Kubernetes", desc: "Gestionar workloads de producción con k8s en entornos cloud.", done: false },
-            { icon: "5", phase: "Fase 5 — IaC", title: "Terraform", desc: "Automatizar la infraestructura en AWS/GCP como código versionable.", done: false }
+        /**
+         * @typedef {{
+         *   num: string; title: string; desc: string;
+         *   tags: string[]; github: string; demo: string;
+         * }} Project
+         */
+
+        /** @type {Project[]} */
+        const projects = [
+            {
+                num: "01",
+                title: "AI Data Copilot",
+                desc: "AI Data Copilot es un asistente inteligente local capaz de interpretar preguntas en lenguaje natural, generar consultas SQL seguras, ejecutar consultas, analizar resultados y crear visualizaciones automáticamente.",
+                tags: ["Python", "LLMs", "RAG", "PostgreSQL", "Data Visualization", "agents"],
+                github: "https://github.com/Dataday28/AI-Data-Copilot",
+                demo: ""
+            },
+            {
+                num: "02",
+                title: "Contry-app",
+                desc: "Aplicación web interactiva desarrollada en Angular para la búsqueda y visualización de datos demográficos globales mediante el consumo de APIs rest.",
+                tags: ["Angular", "TypeScript", "PostgreSQL", "TailwindCSS"],
+                github: "https://github.com/Dataday28/Country-app",
+                demo: "https://country-app-coral-six.vercel.app/"
+            },
+            {
+                num: "03",
+                title: "GifyLoby",
+                desc: "Interfaz responsiva enfocada en la experiencia de usuario (UX/​UI) utilizando CSS avanzado para la optimización de renders visuales.",
+                tags: ["React", "TypeScript", "CSS", "Giphy API"],
+                github: "https://github.com/Dataday28/GifyLoby",
+                demo: "https://gify-loby.vercel.app/"
+            },
+            {
+                num: "04",
+                title: "Asistente Personal de IA",
+                desc: "Este proyecto es un asistente personal en cual puedes gestionar una agenda. El objetivo de este proyecto es crear un asistente con un LLM que te pueda ayudar a gestionar una lista de eventos o tareas de una agenda por medio de lenguaje natural.",
+                tags: ["Python", "LLMs", "RAG", "agents"],
+                github: "https://github.com/Dataday28/LLM-Project",
+                demo: ""
+            }
         ];
 
         // ── Typing animation ─────────────────────────────────────────────────
 
         const typedPhrases = [
-            "aprendiendo infraestructura_",
-            "automatizando todo_",
-            "containers > VMs_",
-            "gitops forever_"
+            "Full-Stack Developer_",
+            "AI Engineer_",
+            "Python & TypeScript_",
+            "Building useful things_"
         ];
 
-        let phraseIdx = 0;
-        let charIdx = 0;
-        let isDeleting = false;
+        let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
         function typeLoop() {
             const el = document.getElementById("typed-text");
             if (!el) return;
-
             const phrase = typedPhrases[phraseIdx];
 
             if (!isDeleting) {
                 el.textContent = phrase.slice(0, ++charIdx);
                 if (charIdx === phrase.length) {
                     isDeleting = true;
-                    setTimeout(typeLoop, 1800);
-                    return;
+                    setTimeout(typeLoop, 1900); return;
                 }
             } else {
                 el.textContent = phrase.slice(0, --charIdx);
@@ -1031,30 +1140,29 @@
                     phraseIdx = (phraseIdx + 1) % typedPhrases.length;
                 }
             }
-
-            setTimeout(typeLoop, isDeleting ? 40 : 75);
+            setTimeout(typeLoop, isDeleting ? 38 : 72);
         }
 
         // ── Terminal animation ────────────────────────────────────────────────
 
         const termLines = [
-            { t: "prompt", text: "marco@devops-bootcamp" },
-            { t: "cmd", text: "cat about.json" },
-            { t: "out", text: '{' },
-            { t: "out", text: '  "rol": "Programador & DevOps Student",' },
-            { t: "out", text: '  "bootcamp": true,' },
-            { t: "out", text: '  "objetivo": "ampliar habilidades tech",' },
-            { t: "out", text: '  "open_to_learn": true' },
-            { t: "out", text: '}' },
-            { t: "prompt", text: "marco@devops-bootcamp" },
-            { t: "cmd", text: "echo $STATUS" },
-            { t: "out", text: "🚀 En camino hacia DevOps Engineer" }
+            { t: "prompt", text: "marco@portfolio" },
+            { t: "cmd", text: "cat developer.json" },
+            { t: "out", text: "{" },
+            { t: "kv", key: "  \"name\"", val: '"Marco Castañon"' },
+            { t: "kv", key: "  \"role\"", val: '"Software Developer"' },
+            { t: "kv", key: "  \"focus\"", val: '["Full-Stack", "AI Engineering"]' },
+            { t: "kv", key: "  \"languages\"", val: '["Python", "TypeScript", "JS"]' },
+            { t: "kv", key: "  \"available\"", val: 'true' },
+            { t: "out", text: "}" },
+            { t: "prompt", text: "marco@portfolio" },
+            { t: "cmd", text: "echo $MOTTO" },
+            { t: "out", text: "💡 Código limpio, soluciones reales." }
         ];
 
         function buildTerminal() {
             const body = document.getElementById("terminal-body");
             if (!body) return;
-
             let idx = 0;
 
             function nextLine() {
@@ -1066,39 +1174,89 @@
                     p.innerHTML = `<span class="t-prompt">❯</span> <span class="t-dir">${line.text}</span> <span class="t-dim">~</span>`;
                 } else if (line.t === "cmd") {
                     p.innerHTML = `&nbsp;&nbsp;<span class="t-cmd">${line.text}</span>`;
+                } else if (line.t === "kv") {
+                    p.innerHTML = `<span class="t-key">${line.key}</span><span class="t-out">: </span><span class="t-str">${line.val}</span><span class="t-out">,</span>`;
                 } else {
                     p.innerHTML = `<span class="t-out">${line.text}</span>`;
                 }
 
                 body.appendChild(p);
-                setTimeout(nextLine, line.t === "prompt" ? 50 : 120);
+                setTimeout(nextLine, line.t === "prompt" ? 40 : 100);
             }
 
             nextLine();
         }
 
-        // ── Skills grid render ────────────────────────────────────────────────
+        // ── Render skills ─────────────────────────────────────────────────────
 
         function renderSkills() {
             const grid = document.getElementById("skills-grid");
             if (!grid) return;
 
-            skills.forEach(function (skill, i) {
+            skillCategories.forEach(function (cat, i) {
+                const div = document.createElement("div");
+                div.className = `skill-category ${cat.cls}`;
+                div.style.transitionDelay = (i * 0.07) + "s";
+
+                const tagsHTML = cat.tags.map(function (t) {
+                    return `<span class="tag">${t}</span>`;
+                }).join("");
+
+                div.innerHTML = `
+          <div class="cat-header">
+            <span class="cat-icon">${cat.icon}</span>
+            <span class="cat-name">${cat.name}</span>
+            <span class="cat-line"></span>
+          </div>
+          <div class="tags">${tagsHTML}</div>
+        `;
+
+                grid.appendChild(div);
+            });
+        }
+
+        // ── Render projects ───────────────────────────────────────────────────
+
+        function renderProjects() {
+            const grid = document.getElementById("projects-grid");
+            if (!grid) return;
+
+            projects.forEach(function (p, i) {
                 const card = document.createElement("div");
-                card.className = "skill-card";
-                card.style.animationDelay = (i * 0.08) + "s";
-                card.dataset.level = String(skill.level);
+                card.className = "project-card";
+                card.style.transitionDelay = (i * 0.1) + "s";
+
+                const tagsHTML = p.tags.map(function (t) {
+                    return `<span class="project-tag">${t}</span>`;
+                }).join("");
+
+                const demoLink = p.demo
+                    ? `<a href="${p.demo}" target="_blank" class="project-link">↗ Demo</a>`
+                    : "";
 
                 card.innerHTML = `
-          <span class="skill-icon">${skill.icon}</span>
-          <div class="skill-name">${skill.name}</div>
-          <div class="skill-desc">${skill.desc}</div>
-          <div class="skill-progress-wrap">
-            <div class="skill-progress-bar" data-target="${skill.level}"></div>
+          <div class="project-body">
+            <div class="project-num">Proyecto ${p.num}</div>
+            <div class="project-title">${p.title}</div>
+            <div class="project-desc">${p.desc}</div>
+            <div class="project-tags">${tagsHTML}</div>
           </div>
-          <div class="skill-status">
-            <span>${skill.status}</span>
-            <span>${skill.level}%</span>
+          <div class="project-footer">
+            <a href="${p.github}" target="_blank" class="project-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
+                  0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7
+                  3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236
+                  1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93
+                  0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267
+                  1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24
+                  2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81
+                  2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297
+                  c0-6.627-5.373-12-12-12"/>
+              </svg>
+              GitHub
+            </a>
+            ${demoLink}
           </div>
         `;
 
@@ -1106,76 +1264,25 @@
             });
         }
 
-        // ── Roadmap render ────────────────────────────────────────────────────
-
-        function renderRoadmap() {
-            const list = document.getElementById("roadmap-list");
-            if (!list) return;
-
-            roadmapItems.forEach(function (item) {
-                const div = document.createElement("div");
-                div.className = "roadmap-item";
-
-                div.innerHTML = `
-          <div class="roadmap-dot ${item.done ? "done" : ""}">${item.icon}</div>
-          <div class="roadmap-content">
-            <div class="roadmap-phase">${item.phase}</div>
-            <div class="roadmap-title">${item.title}</div>
-            <div class="roadmap-desc">${item.desc}</div>
-          </div>
-        `;
-
-                list.appendChild(div);
-            });
-        }
-
         // ── IntersectionObserver ──────────────────────────────────────────────
 
         function setupObservers() {
-            // Skill cards
-            const cardObserver = new IntersectionObserver(
-                function (entries) {
-                    entries.forEach(function (entry) {
-                        if (!entry.isIntersecting) return;
-                        const card = entry.target;
-                        card.classList.add("visible");
-
-                        const bar = card.querySelector(".skill-progress-bar");
-                        const target = parseInt(card.dataset.level || "0", 10);
-                        if (bar) {
-                            requestAnimationFrame(function () {
-                                bar.style.width = target + "%";
-                            });
-                        }
-
-                        cardObserver.unobserve(card);
-                    });
-                },
-                { threshold: 0.2 }
-            );
-
-            document.querySelectorAll(".skill-card").forEach(function (c) {
-                cardObserver.observe(c);
-            });
-
-            // Roadmap items
-            const roadmapObserver = new IntersectionObserver(
+            const revealObserver = new IntersectionObserver(
                 function (entries) {
                     entries.forEach(function (entry) {
                         if (!entry.isIntersecting) return;
                         entry.target.classList.add("visible");
-                        roadmapObserver.unobserve(entry.target);
+                        revealObserver.unobserve(entry.target);
                     });
                 },
                 { threshold: 0.15 }
             );
 
-            document.querySelectorAll(".roadmap-item").forEach(function (item, idx) {
-        /** @type {HTMLElement} */ (item).style.transitionDelay = (idx * 0.12) + "s";
-                roadmapObserver.observe(item);
+            document.querySelectorAll(".skill-category, .project-card").forEach(function (el) {
+                revealObserver.observe(el);
             });
 
-            // Terminal card
+            // Terminal
             const termObserver = new IntersectionObserver(
                 function (entries) {
                     entries.forEach(function (entry) {
@@ -1186,47 +1293,39 @@
                 },
                 { threshold: 0.3 }
             );
-
             const tc = document.getElementById("terminal-card");
             if (tc) termObserver.observe(tc);
         }
 
-        // ── Nav active state on scroll ────────────────────────────────────────
+        // ── Nav highlight ─────────────────────────────────────────────────────
 
         function setupNavHighlight() {
             const sections = document.querySelectorAll("section[id]");
             const navLinks = document.querySelectorAll("nav a");
 
-            const sectionObserver = new IntersectionObserver(
+            const obs = new IntersectionObserver(
                 function (entries) {
                     entries.forEach(function (entry) {
                         if (!entry.isIntersecting) return;
                         const id = entry.target.id;
                         navLinks.forEach(function (link) {
-                            const href = link.getAttribute("href");
-                            if (href === "#" + id) {
-                                link.style.color = "var(--cyan)";
-                            } else {
-                                link.style.color = "";
-                            }
+                            link.style.color = link.getAttribute("href") === "#" + id
+                                ? "var(--cyan)" : "";
                         });
                     });
                 },
                 { threshold: 0.5 }
             );
-
-            sections.forEach(function (s) { sectionObserver.observe(s); });
+            sections.forEach(function (s) { obs.observe(s); });
         }
 
         // ── Init ──────────────────────────────────────────────────────────────
 
         document.addEventListener("DOMContentLoaded", function () {
             renderSkills();
-            renderRoadmap();
+            renderProjects();
             setupObservers();
             setupNavHighlight();
-
-            // Start typing after slight delay
             setTimeout(typeLoop, 1200);
         });
     </script>
