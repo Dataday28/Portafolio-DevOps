@@ -1080,6 +1080,7 @@
             {
                 num: "01",
                 title: "AI Data Copilot",
+                video: "https://www.youtube.com/embed/vUSYZ35PA4I?si=PO0ma0FeTkopvsvV",
                 desc: "AI Data Copilot es un asistente inteligente local capaz de interpretar preguntas en lenguaje natural, generar consultas SQL seguras, ejecutar consultas, analizar resultados y crear visualizaciones automáticamente.",
                 tags: ["Python", "LLMs", "RAG", "PostgreSQL", "Data Visualization", "agents"],
                 github: "https://github.com/Dataday28/AI-Data-Copilot",
@@ -1088,6 +1089,7 @@
             {
                 num: "02",
                 title: "Contry-app",
+                imagen: "images/country-app.png",
                 desc: "Aplicación web interactiva desarrollada en Angular para la búsqueda y visualización de datos demográficos globales mediante el consumo de APIs rest.",
                 tags: ["Angular", "TypeScript", "PostgreSQL", "TailwindCSS"],
                 github: "https://github.com/Dataday28/Country-app",
@@ -1096,6 +1098,7 @@
             {
                 num: "03",
                 title: "GifyLoby",
+                imagen: "images/gifyloby.png",
                 desc: "Interfaz responsiva enfocada en la experiencia de usuario (UX/​UI) utilizando CSS avanzado para la optimización de renders visuales.",
                 tags: ["React", "TypeScript", "CSS", "Giphy API"],
                 github: "https://github.com/Dataday28/GifyLoby",
@@ -1238,6 +1241,8 @@
           <div class="project-body">
             <div class="project-num">Proyecto ${p.num}</div>
             <div class="project-title">${p.title}</div>
+            ${p.imagen ? `<div class="project-imagen"><img src="${p.imagen}" alt="${p.title}" style="width:100%; border-radius:6px; margin-bottom:1rem; object-fit:cover; max-height:200px;"></div>` : ''}
+            ${p.video ? `<div class="project-video"><iframe src="${p.video}" title="${p.title}" style="width:100%; height:200px; border-radius:6px; margin-bottom:1rem;" frameborder="0" allowfullscreen></iframe></div>` : ''}
             <div class="project-desc">${p.desc}</div>
             <div class="project-tags">${tagsHTML}</div>
           </div>
